@@ -1,0 +1,7 @@
+void setupDomination(){
+  
+}
+
+void loopDomination(){
+  
+}
