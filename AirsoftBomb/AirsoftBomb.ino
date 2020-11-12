@@ -2,9 +2,9 @@
  * Name: AirsoftBomb
  * Author: mmariv
  * Created: 07/10/2020
- * LastUpdated: 10/11/2020
  * Description: Airsoft arduino bomb
 */
+
 #include <Wire.h> 
 #include <Keypad.h>
 #include <LiquidCrystal_I2C.h>
@@ -123,14 +123,15 @@ void setup() {
 
   keypad.setHoldTime(50);
   keypad.setDebounceTime(50);
-  keypad.addEventListener(keypadEvent);
+  //keypad.addEventListener(keypadEvent);
 
   delay(2000);
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-  showMenu();
+  //showMenu();
+  setupDefuse();
 }
 
 void keypadEvent(KeypadEvent key){
@@ -240,7 +241,7 @@ void showTimeout(unsigned long timeout){
 }
 
 void showCountDown(unsigned long remaining, bool showMillis){
-  lcd.setCursor(3,1);
+  lcd.setCursor(4,1);
   /* minutes */
   if((remaining/60000) < 10){
     lcd.print("0");
