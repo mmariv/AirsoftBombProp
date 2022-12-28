@@ -109,6 +109,11 @@ void loopDefuse(char * pinCheck){
       }
       resetTimerText = true;
     }
+
+    if(cKey == 'c'){
+      cancelGameMenu(5000);
+      resetTimerText = true;
+    }
   }
 
   lcd.clear();
@@ -123,5 +128,8 @@ void loopDefuse(char * pinCheck){
   else {
     lcd.print("Unknown error!");  
   }
-  keypad.waitForKey();
+  
+  while(!keypad.getKey()){
+    
+  }
 }

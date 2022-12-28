@@ -200,15 +200,15 @@ void browseMenu(int index){
 
 void setNavArrows(byte index, byte maxIndex){
 
-  if(index==0){
+  if(index == 0){
     lcd.setCursor(15,1);
     lcd.write(1); 
   }
-  if(index==maxIndex){  
+  if(index == maxIndex){  
     lcd.setCursor(15,0);
     lcd.write(0);
   }
-  if(index>0 && index<maxIndex){
+  if(index > 0 && index<maxIndex){
     lcd.setCursor(15,1);
     lcd.write(1);
     lcd.setCursor(15,0);
@@ -273,4 +273,21 @@ void startTimeout(){
 
 void resetGame(){
   gameRunning = true;
+}
+
+void cancelGameMenu(unsigned int showForTime){
+  lcd.clear();
+  lcd.print("Cancel game?");
+  lcd.setCursor(0, 1);
+  lcd.print("Press D");
+  unsigned int endTime = millis() + showForTime;
+  while(gameRunning && millis() < endTime){
+    cKey = keypad.getKey();
+    if(cKey == 'd'){
+      gameRunning = false;
+    }
+    if(cKey == 'c'){
+      break;
+    }
+  }
 }
